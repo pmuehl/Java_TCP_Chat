@@ -36,7 +36,7 @@ public class TCPChatLogic implements Runnable{
 	    outStream = new PrintWriter(socket.getOutputStream(), true);
 		
 		}catch(Exception e){
-			e.getMessage();
+			System.out.println("Error while trying to start the server");
 		}
 	}
 }
