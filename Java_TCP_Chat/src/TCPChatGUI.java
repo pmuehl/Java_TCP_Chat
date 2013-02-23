@@ -8,6 +8,6 @@
  */
 public class TCPChatGUI {
 	public TCPChatGUI() {
-		
+
 	}
 }
