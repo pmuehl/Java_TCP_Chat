@@ -1,8 +1,10 @@
+import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 
@@ -14,7 +16,7 @@ import javax.swing.JTextArea;
  * @author Patrick
  *
  */
-public class TCPChatGUI {
+public class TCPChatGUI extends JPanel {
 	private JButton connect;
 	private JRadioButton server;
 	private JRadioButton client;
@@ -28,6 +30,7 @@ public class TCPChatGUI {
 		send= new JButton("Nachricht schicken");
 		txt= new JLabel("");
 		message= new JTextArea("Geben sie hier ihre Nachricht ein");
+		this.setLayout(new BorderLayout());
 		
 		ButtonGroup bg = new ButtonGroup();
 	    server = new JRadioButton("Server", true);
