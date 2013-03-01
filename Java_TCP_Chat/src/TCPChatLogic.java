@@ -11,13 +11,19 @@ import java.io.*;
  *
  */
 public class TCPChatLogic implements Runnable{
-	private ServerSocket serverSocket= null;
-	private Socket socket= null;
-	private Thread prozess=null;
-	private BufferedReader inStream = null;
-	private PrintWriter outStream = null;
+	private MulticastSocket socket;
+	private int port= 6789;
+	
 	
 	public TCPChatLogic(){
+		try	{
+			socket= new MulticastSocket(port);
+		}catch(IOException e){
+			e.getStackTrace();
+		}catch(SecurityException e){
+			e.getStackTrace();
+		}
+		
 		
 	}
 	
@@ -29,14 +35,5 @@ public class TCPChatLogic implements Runnable{
 	}
 	
 	public void serverStart() {
-		try{
-		serverSocket= new ServerSocket(4321);
-		socket= serverSocket.accept();
-		inStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-	    outStream = new PrintWriter(socket.getOutputStream(), true);
-		
-		}catch(Exception e){
-			System.out.println("Error while trying to start the server");
-		}
 	}
 }
