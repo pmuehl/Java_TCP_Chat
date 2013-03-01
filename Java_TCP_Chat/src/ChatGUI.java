@@ -13,10 +13,10 @@ import javax.swing.JTextArea;
  */
 
 /**
- * @author Patrick
+ * @author Patrick Muehl
  *
  */
-public class TCPChatGUI extends JPanel {
+public class ChatGUI extends JPanel {
 	private JButton connect;
 	private JButton disconnect;
 	private JRadioButton server;
@@ -26,7 +26,7 @@ public class TCPChatGUI extends JPanel {
 	private JTextArea message;
 	
 	
-	public TCPChatGUI() {
+	public ChatGUI() {
 		connect= new JButton("Connect");
 		disconnect= new JButton ("Disconnect");
 		send= new JButton("Nachricht schicken");

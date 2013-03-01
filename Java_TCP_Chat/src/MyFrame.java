@@ -1,7 +1,11 @@
 
 import java.awt.Container;
 import javax.swing.JFrame;
-
+/**
+ * 
+ * @author Patrick Muehl
+ *
+ */
 public class MyFrame extends JFrame
 {
 	public MyFrame()

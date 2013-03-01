@@ -7,17 +7,24 @@ import java.io.*;
  */
 
 /**
- * @author Patrick Mühl
+ * Klasse für die Funktionalität des Multicast- Chats
+ * 
+ * @author Patrick Muehl
  *
  */
-public class TCPChatLogic {
+public class ChatLogic {
 	private MulticastSocket socket;
 	private int port= 6789;
 	private InetAddress group;
 	private String username;
+	private String TEXT_ENCODING="UTF-8";
 
-
-	public TCPChatLogic(String username){
+/**
+ * Konstruktor.
+ * Hier wird der Socket gestartet und eine Verbindung aufgebaut
+ * @param username Benutzername des Benutzers, wird im Chat angezeigt
+ */
+	public ChatLogic(String username){
 		this.username= username;
 		try	{
 			socket= new MulticastSocket(port);
@@ -29,7 +36,10 @@ public class TCPChatLogic {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * Methode zum Senden von Nachrichten 
+ * @param message die vom Benutzer eingegebene Nachricht, welche verschickt wird
+ */
 	public void sendMessage(String message){
 		byte [] buffer;
 		DatagramPacket dp;
@@ -44,20 +54,27 @@ public class TCPChatLogic {
 			e.printStackTrace();
 		}
 	}
+/**
+ * Methode zum Empfangen von Nachrichten
+ */
 	public String receiveMessage(){
 		String message="";
-		byte buffer[]= new byte[1000];
+		byte[] buffer= new byte[65536];
 		DatagramPacket dp= new DatagramPacket(buffer, buffer.length);
-		try{			
-			socket.receive(dp);
-			
-		}catch(IOException e){
-			e.printStackTrace();
-		}catch(SecurityException e){
-			e.printStackTrace();
+		while(true){
+			try{
+				socket.receive(dp);
+	            message = new String(dp.getData(),0,dp.getLength(), TEXT_ENCODING);
+	            return message;
+	        }catch(IOException e){
+	        	e.printStackTrace();
+	        }
 		}
-		return message;
+		
 	}
+/**
+ * Methode zum Trennen der Verbindung
+ */
 	public void disconnect(){
 		try{	
 			socket.leaveGroup(group);
