@@ -2,6 +2,8 @@ import java.net.*;
 import java.lang.*;
 import java.io.*;
 
+import javax.swing.JOptionPane;
+
 /**
  * 
  */
@@ -35,43 +37,25 @@ public class ChatLogic {
 		}catch(SecurityException e){
 			e.printStackTrace();
 		}
+		
+		JOptionPane.showInputDialog("Gib einen Text ein zum senden!");
+		
+		Thread sendThread = new Thread(new sendThread(username));
+		sendThread.start();
+		
+		Thread recieveThread = new Thread(new recieveThread(socket));
+		System.out.println("Thread Recieve gestartet!");
+		recieveThread.start();
 	}
 /**
  * Methode zum Senden von Nachrichten 
  * @param message die vom Benutzer eingegebene Nachricht, welche verschickt wird
  */
-	public void sendMessage(String message){
-		byte [] buffer;
-		DatagramPacket dp;
-		String nachricht= this.username+": "+ message+ "\n";
-		buffer= (nachricht).getBytes();
-		dp= new DatagramPacket(buffer, buffer.length, group, port);
-		try{
-			socket.send(dp);
-		}catch(IOException e) {
-			e.printStackTrace();
-		}catch(SecurityException e){
-			e.printStackTrace();
-		}
-	}
+	
 /**
  * Methode zum Empfangen von Nachrichten
  */
-	public String receiveMessage(){
-		String message="";
-		byte[] buffer= new byte[65536];
-		DatagramPacket dp= new DatagramPacket(buffer, buffer.length);
-		while(true){
-			try{
-				socket.receive(dp);
-	            message = new String(dp.getData(),0,dp.getLength(), text_encoding);
-	            return message;
-	        }catch(IOException e){
-	        	e.printStackTrace();
-	        }
-		}
-		
-	}
+	
 	
 /**
  * Methode zum Trennen der Verbindung
@@ -87,5 +71,80 @@ public class ChatLogic {
 
 
 
+	public class sendThread implements Runnable
+	{
+		
+		String username = null;
+
+		public sendThread(String username)
+		{
+			this.username = username;
+			
+		}
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			while(true)
+			{
+				sendMessage(JOptionPane.showInputDialog("Gib einen Text zum senden ein!"));
+			}
+		}
+		
+		public void sendMessage(String message){
+			
+			byte [] buffer;
+			DatagramPacket dp;
+			String nachricht= this.username+": "+ message+ "\n";
+			buffer= (nachricht).getBytes();
+			dp= new DatagramPacket(buffer, buffer.length, group, port);
+			try{
+				socket.send(dp);
+			}catch(IOException e) {
+				e.printStackTrace();
+			}catch(SecurityException e){
+				e.printStackTrace();
+			}
+			System.out.println(nachricht);
+		}
+	}
+	
+	public class recieveThread implements Runnable
+	{
+		
+		MulticastSocket ms;
+		
+		public recieveThread(MulticastSocket ms)
+		{
+			this.ms = ms;
+		}
+
+		@Override
+		public void run() 
+		{
+			while(true)
+			{
+				
+				String message="";
+				byte[] buffer = null;
+				try {
+					buffer = new byte[ms.getReceiveBufferSize()];
+				} catch (SocketException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				DatagramPacket dp= new DatagramPacket(buffer, buffer.length);
+				try{
+					ms.receive(dp);
+		            message = new String(dp.getData(),0,dp.getLength(), text_encoding);
+		            System.out.println(message);
+//				            return message;
+		        }catch(IOException e){
+		        	e.printStackTrace();
+		        }
+			}
+		}
+		
+	}
 
 }
