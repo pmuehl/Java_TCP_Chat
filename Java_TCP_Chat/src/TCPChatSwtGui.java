@@ -1,0 +1,48 @@
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.custom.SashForm;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.RowLayout;
+import org.eclipse.swt.widgets.Text;
+import swing2swt.layout.BorderLayout;
+import swing2swt.layout.FlowLayout;
+import swing2swt.layout.BoxLayout;
+import org.eclipse.swt.widgets.List;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Spinner;
+
+public class TCPChatSwtGui {
+	private Shell xp;
+	private Text text;
+	private Text text_1;
+	private Text text_2;
+	private Text text_3;
+	public TCPChatSwtGui() {
+		Display dis = new Display();
+		xp = new Shell(dis);		
+		
+		List list = new List(xp, SWT.BORDER);
+		list.setBounds(340, 59, 94, 282);
+		
+		text_1 = new Text(xp, SWT.BORDER);
+		text_1.setBounds(10, 348, 312, 58);
+		
+		Button btnSenden = new Button(xp, SWT.NONE);
+		btnSenden.setBounds(359, 381, 75, 25);
+		btnSenden.setText("Senden");
+		
+		Button btnLogin = new Button(xp, SWT.NONE);
+		btnLogin.setBounds(10, 10, 75, 25);
+		btnLogin.setText("LogIN");
+		
+		text_2 = new Text(xp, SWT.BORDER);
+		text_2.setBounds(103, 10, 118, 25);
+		
+		text_3 = new Text(xp, SWT.BORDER);
+		text_3.setEditable(false);
+		text_3.setBounds(10, 59, 312, 282);
+	}
+}
