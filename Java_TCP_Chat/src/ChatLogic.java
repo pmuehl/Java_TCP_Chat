@@ -17,7 +17,7 @@ public class ChatLogic {
 	private int port= 6789;
 	private InetAddress group;
 	private String username;
-	private String TEXT_ENCODING="UTF-8";
+	private String text_encoding="UTF-8";
 
 /**
  * Konstruktor.
@@ -64,7 +64,7 @@ public class ChatLogic {
 		while(true){
 			try{
 				socket.receive(dp);
-	            message = new String(dp.getData(),0,dp.getLength(), TEXT_ENCODING);
+	            message = new String(dp.getData(),0,dp.getLength(), text_encoding);
 	            return message;
 	        }catch(IOException e){
 	        	e.printStackTrace();
@@ -72,12 +72,14 @@ public class ChatLogic {
 		}
 		
 	}
+	
 /**
  * Methode zum Trennen der Verbindung
  */
 	public void disconnect(){
 		try{	
 			socket.leaveGroup(group);
+			socket.close();
 		}catch(IOException e){
 			e.printStackTrace();
 		}
