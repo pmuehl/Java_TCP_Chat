@@ -21,11 +21,11 @@ public class ChatLogic {
 	private String username;
 	private String text_encoding="UTF-8";
 
-/**
- * Konstruktor.
- * Hier wird der Socket gestartet und eine Verbindung aufgebaut
- * @param username Benutzername des Benutzers, wird im Chat angezeigt
- */
+	/**
+	 * Konstruktor.
+	 * Hier wird der Socket gestartet und eine Verbindung aufgebaut
+	 * @param username Benutzername des Benutzers, wird im Chat angezeigt
+	 */
 	public ChatLogic(String username){
 		this.username= username;
 		try	{
@@ -37,29 +37,29 @@ public class ChatLogic {
 		}catch(SecurityException e){
 			e.printStackTrace();
 		}
-		
+
 		JOptionPane.showInputDialog("Gib einen Text ein zum senden!");
-		
+
 		Thread sendThread = new Thread(new sendThread(username));
 		sendThread.start();
-		
+
 		Thread recieveThread = new Thread(new recieveThread(socket));
 		System.out.println("Thread Recieve gestartet!");
 		recieveThread.start();
 	}
-/**
- * Methode zum Senden von Nachrichten 
- * @param message die vom Benutzer eingegebene Nachricht, welche verschickt wird
- */
-	
-/**
- * Methode zum Empfangen von Nachrichten
- */
-	
-	
-/**
- * Methode zum Trennen der Verbindung
- */
+	/**
+	 * Methode zum Senden von Nachrichten 
+	 * @param message die vom Benutzer eingegebene Nachricht, welche verschickt wird
+	 */
+
+	/**
+	 * Methode zum Empfangen von Nachrichten
+	 */
+
+
+	/**
+	 * Methode zum Trennen der Verbindung
+	 */
 	public void disconnect(){
 		try{	
 			socket.leaveGroup(group);
@@ -70,29 +70,30 @@ public class ChatLogic {
 	}
 
 
+	/**
+	 * Thread zum Senden einer Nachricht
+	 * @author Patrick Muehl
+	 *
+	 */
+	public class sendThread implements Runnable{
 
-	public class sendThread implements Runnable
-	{
-		
 		String username = null;
 
-		public sendThread(String username)
-		{
+		public sendThread(String username){
 			this.username = username;
-			
+
 		}
-		
+
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			while(true)
-			{
+			while(true){
 				sendMessage(JOptionPane.showInputDialog("Gib einen Text zum senden ein!"));
 			}
 		}
-		
+
 		public void sendMessage(String message){
-			
+
 			byte [] buffer;
 			DatagramPacket dp;
 			String nachricht= this.username+": "+ message+ "\n";
@@ -108,23 +109,23 @@ public class ChatLogic {
 			System.out.println(nachricht);
 		}
 	}
-	
-	public class recieveThread implements Runnable
-	{
-		
+	/**
+	 * Thread zum empfangen einer Nachricht
+	 * @author Patrick Muehl
+	 *
+	 */
+	public class recieveThread implements Runnable{
+
 		MulticastSocket ms;
-		
-		public recieveThread(MulticastSocket ms)
-		{
+
+		public recieveThread(MulticastSocket ms){
 			this.ms = ms;
 		}
 
 		@Override
-		public void run() 
-		{
-			while(true)
-			{
-				
+		public void run() {
+			while(true) {
+
 				String message="";
 				byte[] buffer = null;
 				try {
@@ -136,15 +137,15 @@ public class ChatLogic {
 				DatagramPacket dp= new DatagramPacket(buffer, buffer.length);
 				try{
 					ms.receive(dp);
-		            message = new String(dp.getData(),0,dp.getLength(), text_encoding);
-		            System.out.println(message);
-//				            return message;
-		        }catch(IOException e){
-		        	e.printStackTrace();
-		        }
+					message = new String(dp.getData(),0,dp.getLength(), text_encoding);
+					System.out.println(message);
+					//				            return message;
+				}catch(IOException e){
+					e.printStackTrace();
+				}
 			}
 		}
-		
+
 	}
 
 }
