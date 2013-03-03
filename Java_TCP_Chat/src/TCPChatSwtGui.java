@@ -27,11 +27,14 @@ public class TCPChatSwtGui {
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
+	private String t=""+"\n";
+	private String uname="";
 	public TCPChatSwtGui() {
 		Display dis = new Display();
 		xp = new Shell(dis);		
 		
-		List list = new List(xp, SWT.BORDER);
+		
+		final List list = new List(xp, SWT.BORDER);
 		list.setBounds(340, 59, 94, 282);
 		
 		text_1 = new Text(xp, SWT.BORDER);
@@ -41,16 +44,38 @@ public class TCPChatSwtGui {
 		btnSenden.setBounds(359, 381, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
+			
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
 		    public void widgetSelected(SelectionEvent e) {
-		        System.out.println("Button pushed.");
+		    	
+		        //System.out.println("Button pushed.");
+		    	t=t+text_1.getText()+"\n";
+		    	text_3.setText(t);
+		    	text_1.setText("");
 		      }
 		   });
 		
 		Button btnLogin = new Button(xp, SWT.NONE);
 		btnLogin.setBounds(10, 10, 75, 25);
 		btnLogin.setText("LogIN");
+		btnLogin.addSelectionListener(new SelectionListener(){
+			
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				uname= text_2.getText();
+				list.add(uname);
+				
+				
+			}
+			
+			
+		});
 		
 		text_2 = new Text(xp, SWT.BORDER);
 		text_2.setBounds(103, 10, 118, 25);
