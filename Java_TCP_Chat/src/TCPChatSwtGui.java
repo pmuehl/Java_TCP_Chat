@@ -21,6 +21,8 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.custom.CCombo;
 
 public class TCPChatSwtGui {
 	private Shell xp;
@@ -42,7 +44,7 @@ public class TCPChatSwtGui {
 		text_1 = new Text(xp, SWT.BORDER);
 		text_1.setBounds(10, 348, 312, 58);
 		
-		final Button btnSenden = new Button(xp, SWT.NONE);
+		Button btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
@@ -53,7 +55,7 @@ public class TCPChatSwtGui {
 		    	
 		        //System.out.println("Button pushed.");
 		    	t=t+text_1.getText()+"\n";
-		    	text_3.setText(uname + ": " +t);
+		    	text_3.setText("\nuname" + ": " + t);
 		    	text_1.setText("");
 		      }
 		   });
@@ -72,7 +74,8 @@ public class TCPChatSwtGui {
 				// TODO Auto-generated method stub
 				uname= text_2.getText();
 				list.add(uname);
-						
+				
+				
 			}
 			
 			
@@ -88,6 +91,14 @@ public class TCPChatSwtGui {
 		Button btnLogOUT = new Button(xp, SWT.NONE);
 		btnLogOUT.setBounds(10, 10, 75, 25);
 		btnLogOUT.setText("LogOUt");
+		
+		CCombo combo = new CCombo(xp, SWT.BORDER);
+		combo.setTouchEnabled(true);
+		combo.setToolTipText("Blau\r\nGr\u00FCn\r\nRot");
+		combo.setText("Schwarz");
+		combo.setBounds(340, 378, 75, 21);
+		xt("LogOUt");
+		
 		btnLogOUT.addSelectionListener(new SelectionListener(){
 			
 			@Override
@@ -109,9 +120,12 @@ public class TCPChatSwtGui {
 		xp.open();
 		while (!xp.isDisposed()) {
 			   if (!dis.readAndDispatch()) {
-			    dis.sleep();
-			}
+			    dis.sleep();		}
 		}
+	}
+	private void xt(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
