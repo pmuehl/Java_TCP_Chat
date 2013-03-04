@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Spinner;
+import org.eclipse.swt.events.SelectionAdapter;
 
 /**
  * Klasse welche die GUI implementiert
@@ -36,11 +37,15 @@ public class TCPChatSwtGui {
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
+<<<<<<< HEAD
 
 	private String t="";
 
 
 
+=======
+	private String t=""+"\n";
+>>>>>>> 579be463d061d326c3fc6855da0e9a027735a767
 	private String uname="";
 	public TCPChatSwtGui() {
 		Display dis = new Display();
@@ -54,7 +59,11 @@ public class TCPChatSwtGui {
 		text_1 = new Text(xp, SWT.BORDER);
 		text_1.setBounds(10, 348, 312, 58);
 		
+<<<<<<< HEAD
 		Button btnSenden = new Button(xp, SWT.NONE);
+=======
+		final Button btnSenden = new Button(xp, SWT.NONE);
+>>>>>>> 579be463d061d326c3fc6855da0e9a027735a767
 		btnSenden.setBounds(340, 347, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
@@ -65,7 +74,11 @@ public class TCPChatSwtGui {
 		    	
 		        //System.out.println("Button pushed.");
 		    	t=t+text_1.getText()+"\n";
+<<<<<<< HEAD
 		    	text_3.setText(t);
+=======
+		    	text_3.setText(uname + ": " +t);
+>>>>>>> 579be463d061d326c3fc6855da0e9a027735a767
 		    	text_1.setText("");
 		      }
 		   });
@@ -84,8 +97,12 @@ public class TCPChatSwtGui {
 				// TODO Auto-generated method stub
 				uname= text_2.getText();
 				list.add(uname);
+<<<<<<< HEAD
 				
 				
+=======
+						
+>>>>>>> 579be463d061d326c3fc6855da0e9a027735a767
 			}
 			
 			
