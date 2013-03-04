@@ -42,7 +42,7 @@ public class TCPChatSwtGui {
 		text_1 = new Text(xp, SWT.BORDER);
 		text_1.setBounds(10, 348, 312, 58);
 		
-		Button btnSenden = new Button(xp, SWT.NONE);
+		final Button btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
@@ -53,7 +53,7 @@ public class TCPChatSwtGui {
 		    	
 		        //System.out.println("Button pushed.");
 		    	t=t+text_1.getText()+"\n";
-		    	text_3.setText(t);
+		    	text_3.setText(uname + ": " +t);
 		    	text_1.setText("");
 		      }
 		   });
@@ -72,8 +72,7 @@ public class TCPChatSwtGui {
 				// TODO Auto-generated method stub
 				uname= text_2.getText();
 				list.add(uname);
-				
-				
+						
 			}
 			
 			
