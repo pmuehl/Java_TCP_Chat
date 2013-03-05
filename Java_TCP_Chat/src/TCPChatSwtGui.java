@@ -24,27 +24,15 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.custom.CCombo;
 
-/**
- * Klasse welche die GUI implementiert
- * @author Stefan Pitirut, Patrick Muehl
- *
- */
-
-import org.eclipse.swt.events.SelectionAdapter;
-
-
 public class TCPChatSwtGui {
 	private Shell xp;
 	private Text text;
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
-	private String t="";	
+	private String t="";
 	private String uname="";
-	private boolean pruefe=false;
-
-
-
+	private boolean pruefe= false;
 	public TCPChatSwtGui() {
 		Display dis = new Display();
 		xp = new Shell(dis);		
@@ -56,42 +44,23 @@ public class TCPChatSwtGui {
 
 		text_1 = new Text(xp, SWT.BORDER);
 		text_1.setBounds(10, 348, 312, 58);
-<<<<<<< HEAD
-		
-		Button btnSenden = new Button(xp, SWT.NONE);
-=======
 
-		//Button btnSenden = new Button(xp, SWT.NONE);
-		final Button btnSenden = new Button(xp, SWT.NONE);
->>>>>>> 5170fceeed4c2b7e366c43b23e5f87367476056c
+		Button btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
 
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
-<<<<<<< HEAD
-		    public void widgetSelected(SelectionEvent e) {
-		    	
-		        //System.out.println("Button pushed.");
-		    	t=t+text_1.getText()+"\n";
-		    	text_3.setText("\nuname" + ": " + t);
-		    	text_1.setText("");
-		      }
-		   });
-		
-=======
 			public void widgetSelected(SelectionEvent e) {
 
 				//System.out.println("Button pushed.");
 				t=t+uname+": "+text_1.getText()+"\n";
-
 				text_3.setText(t);
 				text_1.setText("");
 			}
 		});
 
->>>>>>> 5170fceeed4c2b7e366c43b23e5f87367476056c
 		Button btnLogin = new Button(xp, SWT.NONE);
 		btnLogin.setBounds(357, 10, 75, 25);
 		btnLogin.setText("LogIN");
@@ -104,24 +73,16 @@ public class TCPChatSwtGui {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-<<<<<<< HEAD
-				uname= text_2.getText();
-				list.add(uname);
-				
-				
-=======
 				if(pruefe== false){
 					uname= text_2.getText();
 					list.add(uname);
-					text_2.setText("");
-					pruefe= true;
+					
+					pruefe=true;
 				}else{
 					text_2.setText("Bereits angemeldet");
 					text_2.setEditable(false);
 				}
 
-
->>>>>>> 5170fceeed4c2b7e366c43b23e5f87367476056c
 			}
 
 
@@ -137,16 +98,15 @@ public class TCPChatSwtGui {
 		Button btnLogOUT = new Button(xp, SWT.NONE);
 		btnLogOUT.setBounds(10, 10, 75, 25);
 		btnLogOUT.setText("LogOUt");
-		
+
 		CCombo combo = new CCombo(xp, SWT.BORDER);
 		combo.setTouchEnabled(true);
 		combo.setToolTipText("Blau\r\nGr\u00FCn\r\nRot");
 		combo.setText("Schwarz");
 		combo.setBounds(340, 378, 75, 21);
 		xt("LogOUt");
-		
-		btnLogOUT.addSelectionListener(new SelectionListener(){
 
+		btnLogOUT.addSelectionListener(new SelectionListener(){
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub	
@@ -154,7 +114,8 @@ public class TCPChatSwtGui {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
-				uname= text_2.getText();
+				//uname= text_2.getText();
+				uname= list.getItem(0);
 				list.remove(uname);
 
 
@@ -165,22 +126,13 @@ public class TCPChatSwtGui {
 
 		xp.open();
 		while (!xp.isDisposed()) {
-<<<<<<< HEAD
-			   if (!dis.readAndDispatch()) {
-			    dis.sleep();		}
+			if (!dis.readAndDispatch()) {
+				dis.sleep();		}
 		}
 	}
 	private void xt(String string) {
 		// TODO Auto-generated method stub
-		
-	}
-	
-=======
-			if (!dis.readAndDispatch()) {
-				dis.sleep();
-			}
-		}
+
 	}
 
->>>>>>> 5170fceeed4c2b7e366c43b23e5f87367476056c
 }
