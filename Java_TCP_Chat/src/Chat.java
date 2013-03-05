@@ -1,5 +1,3 @@
-import org.eclipse.swt.widgets.Listener;
-
 /**
  * 
  * @author Patrick Muehl

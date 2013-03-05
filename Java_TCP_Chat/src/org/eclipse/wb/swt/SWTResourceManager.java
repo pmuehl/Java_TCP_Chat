@@ -448,5 +448,8 @@ public class SWTResourceManager {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	public static Color getColor(int r, int g, int b) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
