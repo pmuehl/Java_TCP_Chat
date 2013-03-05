@@ -23,6 +23,8 @@ import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.custom.CCombo;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 
 public class TCPChatSwtGui {
 	private Shell xp;
@@ -98,12 +100,36 @@ public class TCPChatSwtGui {
 		Button btnLogOUT = new Button(xp, SWT.NONE);
 		btnLogOUT.setBounds(10, 10, 75, 25);
 		btnLogOUT.setText("LogOUt");
-
-		CCombo combo = new CCombo(xp, SWT.BORDER);
-		combo.setTouchEnabled(true);
-		combo.setToolTipText("Blau\r\nGr\u00FCn\r\nRot");
-		combo.setText("Schwarz");
-		combo.setBounds(340, 378, 75, 21);
+		
+		Menu menu = new Menu(xp, SWT.BAR);
+		xp.setMenuBar(menu);
+		
+		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
+		mntmConnect.setText("Connect");
+		
+		Menu menu_1 = new Menu(mntmConnect);
+		mntmConnect.setMenu(menu_1);
+		
+		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
+		mntmHost.setText("Host");
+		
+		MenuItem mntmFreeloader = new MenuItem(menu_1, SWT.NONE);
+		mntmFreeloader.setText("Freeloader");
+		
+		MenuItem mntmFarbe = new MenuItem(menu, SWT.CASCADE);
+		mntmFarbe.setText("Farbe");
+		
+		Menu menu_2 = new Menu(mntmFarbe);
+		mntmFarbe.setMenu(menu_2);
+		
+		MenuItem mntmBlau = new MenuItem(menu_2, SWT.RADIO);
+		mntmBlau.setText("Blau");
+		
+		MenuItem mntmGelb = new MenuItem(menu_2, SWT.RADIO);
+		mntmGelb.setText("Gelb");
+		
+		MenuItem mntmRot = new MenuItem(menu_2, SWT.RADIO);
+		mntmRot.setText("Rot");
 		xt("LogOUt");
 
 		btnLogOUT.addSelectionListener(new SelectionListener(){
@@ -134,5 +160,4 @@ public class TCPChatSwtGui {
 		// TODO Auto-generated method stub
 
 	}
-
 }
