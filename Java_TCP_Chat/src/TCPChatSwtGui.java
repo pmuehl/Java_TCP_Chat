@@ -49,6 +49,13 @@ public class TCPChatSwtGui {
 		text_1.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
 		text_1.setForeground(SWTResourceManager.getColor(0, 0, 0));
 		text_1.setBounds(10, 348, 312, 58);
+		text_1.addListener(SWT.DefaultSelection,  new Listener (){
+			public void handleEvent (Event e) {
+				t=t+uname+": "+text_1.getText()+"\n";
+				text_3.setText(t);
+				text_1.setText("");
+			}
+		});
 
 		Button btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
@@ -63,6 +70,7 @@ public class TCPChatSwtGui {
 				t=t+uname+": "+text_1.getText()+"\n";
 				text_3.setText(t);
 				text_1.setText("");
+
 			}
 		});
 
