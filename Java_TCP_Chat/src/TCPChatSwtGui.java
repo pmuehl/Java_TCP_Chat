@@ -21,6 +21,9 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.TextLayout;
+import org.eclipse.swt.graphics.TextStyle;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Menu;
@@ -29,7 +32,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 public class TCPChatSwtGui {
 	private Shell xp;
-	private Text text;
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
@@ -40,8 +42,7 @@ public class TCPChatSwtGui {
 		Display dis = new Display();
 		xp = new Shell(dis);		
 		xp.setSize(458, 505);
-
-
+		
 		final List list = new List(xp, SWT.BORDER);
 		list.setBounds(340, 59, 94, 282);
 
@@ -54,6 +55,7 @@ public class TCPChatSwtGui {
 				t=t+uname+": "+text_1.getText()+"\n";
 				text_3.setText(t);
 				text_1.setText("");
+
 			}
 		});
 
