@@ -19,8 +19,10 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Menu;
@@ -101,13 +103,13 @@ public class TCPChatSwtGui {
 
 		});
 
-		text_2 = new Text(xp, SWT.BORDER);
+		text_2 = new Text(xp, SWT.BORDER );
 		text_2.setBounds(216, 12, 118, 25);
 
-		text_3 = new Text(xp, SWT.V_SCROLL);
+		final Text text_3 = new Text(xp,SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
 		text_3.setEditable(false);
 		text_3.setBounds(10, 59, 312, 282);
-
+		
 		Button btnLogOUT = new Button(xp, SWT.NONE);
 		btnLogOUT.setEnabled(true);
 		btnLogOUT.setBounds(10, 10, 75, 25);
@@ -253,12 +255,14 @@ public class TCPChatSwtGui {
 
 
 		});
-
+		
+		    
 		xp.open();
 		while (!xp.isDisposed()) {
 			if (!dis.readAndDispatch()) {
 				dis.sleep();		}
 		}
+		dis.dispose();
 	}
 	private void xt(String string) {
 		// TODO Auto-generated method stub
