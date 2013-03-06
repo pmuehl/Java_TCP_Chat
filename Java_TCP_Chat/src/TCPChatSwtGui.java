@@ -57,9 +57,10 @@ public class TCPChatSwtGui {
 			public void widgetSelected(SelectionEvent e) {
 
 				//System.out.println("Button pushed.");
-				t=t+uname+": "+text_1.getText()+"\n";
-				text_3.setText(t);
+				t=uname+": "+text_1.getText()+"\n";
+				text_3.append(t);
 				text_1.setText("");
+
 			}
 		});
 
@@ -78,7 +79,7 @@ public class TCPChatSwtGui {
 				if(pruefe== false){
 					uname= text_2.getText();
 					list.add(uname);
-					
+
 					pruefe=true;
 				}else{
 					text_2.setText("Bereits angemeldet");
@@ -100,34 +101,34 @@ public class TCPChatSwtGui {
 		Button btnLogOUT = new Button(xp, SWT.NONE);
 		btnLogOUT.setBounds(10, 10, 75, 25);
 		btnLogOUT.setText("LogOUt");
-		
+
 		Menu menu = new Menu(xp, SWT.BAR);
 		xp.setMenuBar(menu);
-		
+
 		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
 		mntmConnect.setText("Connect");
-		
+
 		Menu menu_1 = new Menu(mntmConnect);
 		mntmConnect.setMenu(menu_1);
-		
+
 		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
 		mntmHost.setText("Host");
-		
+
 		MenuItem mntmFreeloader = new MenuItem(menu_1, SWT.NONE);
 		mntmFreeloader.setText("Freeloader");
-		
+
 		MenuItem mntmFarbe = new MenuItem(menu, SWT.CASCADE);
 		mntmFarbe.setText("Farbe");
-		
+
 		Menu menu_2 = new Menu(mntmFarbe);
 		mntmFarbe.setMenu(menu_2);
-		
+
 		MenuItem mntmBlau = new MenuItem(menu_2, SWT.RADIO);
 		mntmBlau.setText("Blau");
-		
+
 		MenuItem mntmGelb = new MenuItem(menu_2, SWT.RADIO);
 		mntmGelb.setText("Gelb");
-		
+
 		MenuItem mntmRot = new MenuItem(menu_2, SWT.RADIO);
 		mntmRot.setText("Rot");
 		xt("LogOUt");
@@ -141,9 +142,16 @@ public class TCPChatSwtGui {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				//uname= text_2.getText();
-				uname= list.getItem(0);
-				list.remove(uname);
+				if(pruefe== true){
 
+
+					uname= list.getItem(0);
+					list.remove(uname);
+					pruefe= false;
+				}else{
+					text_2.setText("Kein user");
+					text_2.setEditable(false);
+				}
 
 			}
 
