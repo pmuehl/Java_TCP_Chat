@@ -21,14 +21,17 @@ import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.TextLayout;
+import org.eclipse.swt.graphics.TextStyle;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.wb.swt.SWTResourceManager;
 
 public class TCPChatSwtGui {
 	private Shell xp;
-	private Text text;
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
@@ -39,13 +42,22 @@ public class TCPChatSwtGui {
 		Display dis = new Display();
 		xp = new Shell(dis);		
 		xp.setSize(458, 505);
-
-
+		
 		final List list = new List(xp, SWT.BORDER);
 		list.setBounds(340, 59, 94, 282);
 
 		text_1 = new Text(xp, SWT.BORDER);
+		text_1.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.NORMAL));
+		text_1.setForeground(SWTResourceManager.getColor(0, 0, 0));
 		text_1.setBounds(10, 348, 312, 58);
+		text_1.addListener(SWT.DefaultSelection,  new Listener (){
+			public void handleEvent (Event e) {
+				t=t+uname+": "+text_1.getText()+"\n";
+				text_3.setText(t);
+				text_1.setText("");
+
+			}
+		});
 
 		Button btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
@@ -99,6 +111,7 @@ public class TCPChatSwtGui {
 		text_3.setBounds(10, 59, 312, 282);
 
 		Button btnLogOUT = new Button(xp, SWT.NONE);
+		btnLogOUT.setEnabled(true);
 		btnLogOUT.setBounds(10, 10, 75, 25);
 		btnLogOUT.setText("LogOUt");
 
@@ -106,13 +119,19 @@ public class TCPChatSwtGui {
 		xp.setMenuBar(menu);
 
 		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
+<<<<<<< HEAD
 		mntmConnect.setText("Connect");
 
+=======
+		mntmConnect.setText("Connect as");
+		
+>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 		Menu menu_1 = new Menu(mntmConnect);
 		mntmConnect.setMenu(menu_1);
 
 		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
 		mntmHost.setText("Host");
+<<<<<<< HEAD
 
 		MenuItem mntmFreeloader = new MenuItem(menu_1, SWT.NONE);
 		mntmFreeloader.setText("Freeloader");
@@ -131,6 +150,112 @@ public class TCPChatSwtGui {
 
 		MenuItem mntmRot = new MenuItem(menu_2, SWT.RADIO);
 		mntmRot.setText("Rot");
+=======
+		
+		MenuItem mntmUser = new MenuItem(menu_1, SWT.NONE);
+		mntmUser.setText("User");
+		
+		MenuItem mntmFarbe = new MenuItem(menu, SWT.CASCADE);
+		mntmFarbe.setText("Chat colour");
+		
+		Menu menu_2 = new Menu(mntmFarbe);
+		mntmFarbe.setMenu(menu_2);
+		
+		MenuItem mntmBlack = new MenuItem(menu_2, SWT.RADIO);
+		mntmBlack.setText("Black");
+		mntmBlack.addSelectionListener(new SelectionListener(){
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				text_1.setForeground(SWTResourceManager.getColor(0, 0, 0));
+				//text_3.setForeground(SWTResourceManager.getColor(0, 0, 0));         dass is für die ausgabe, geht aber nich, schaus dir an was da passiert
+
+			}
+
+
+		});
+		
+		MenuItem mntmBlue = new MenuItem(menu_2, SWT.RADIO);
+		mntmBlue.setText("Blue");
+		mntmBlue.addSelectionListener(new SelectionListener(){
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				text_1.setForeground(SWTResourceManager.getColor(0, 0, 255));
+				//text_3.setForeground(SWTResourceManager.getColor(0, 0, 255));         dass is für die ausgabe, geht aber nich, schaus dir an was da passiert
+
+			}
+
+
+		});
+		MenuItem mntmPurple = new MenuItem(menu_2, SWT.RADIO);
+		mntmPurple.setText("Purple");
+		mntmPurple.addSelectionListener(new SelectionListener(){
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				text_1.setForeground(SWTResourceManager.getColor(191, 0, 255));
+				//text_3.setForeground(SWTResourceManager.getColor(191, 0, 255));         dass is für die ausgabe, geht aber nich, schaus dir an was da passiert
+
+			}
+
+
+		});
+		
+		MenuItem mntmRed = new MenuItem(menu_2, SWT.RADIO);
+		mntmRed.setText("Red");
+		mntmRed.addSelectionListener(new SelectionListener(){
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				text_1.setForeground(SWTResourceManager.getColor(255, 0, 0));
+				//text_3.setForeground(SWTResourceManager.getColor(255, 0, 0));         dass is für die ausgabe, geht aber nich, schaus dir an was da passiert
+
+			}
+
+
+		});
+		
+		MenuItem mntmYellow = new MenuItem(menu_2, SWT.RADIO);
+		mntmYellow.setText("Yellow");
+		mntmYellow.addSelectionListener(new SelectionListener(){
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub	
+			}
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+				text_1.setForeground(SWTResourceManager.getColor(255, 255, 0));
+				//text_3.setForeground(SWTResourceManager.getColor(255 , 255, 0));         dass is für die ausgabe, geht aber nich, schaus dir an was da passiert
+
+			}
+
+
+		});
+		
+>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 		xt("LogOUt");
 
 		btnLogOUT.addSelectionListener(new SelectionListener(){
@@ -142,6 +267,7 @@ public class TCPChatSwtGui {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				//uname= text_2.getText();
+<<<<<<< HEAD
 				if(pruefe== true){
 
 
@@ -153,6 +279,18 @@ public class TCPChatSwtGui {
 					text_2.setEditable(false);
 				}
 
+=======
+				
+				//if(pruefe==true){							damit kann ich den buton disablen nachdem er einmal ausgelogt hat, aber dafür nichmehr availablen
+					uname= list.getItem(0);
+					list.remove(uname);
+					//pruefe=false;							und der button muss final gemacht werden damit er hier aufgerufen werden kann
+
+				//}else{
+				//	System.out.println("Sie sind bereits ausgelogt!");
+				//	btnLogOUT.setEnabled(false);
+				//}
+>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 			}
 
 
