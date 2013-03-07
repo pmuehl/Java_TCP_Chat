@@ -1,3 +1,5 @@
+package gui;
+
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.custom.SashForm;
@@ -31,10 +33,12 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+//import ChatController.SendenButtonListener;
 //import ChatController.Text_1EnterListener;
 
 public class TCPChatSwtGui {
 	private Shell xp;
+	private Display dis;
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
@@ -42,9 +46,12 @@ public class TCPChatSwtGui {
 	private String uname="";
 	private List list;
 	private boolean pruefe= false;
+	private Button btnSenden;
+
+
 	
 	public TCPChatSwtGui() {
-		Display dis = new Display();
+		dis = new Display();
 		xp = new Shell(dis);		
 		xp.setSize(458, 505);
 		
@@ -64,14 +71,16 @@ public class TCPChatSwtGui {
 			}
 		});
 		
+		
 
-		Button btnSenden = new Button(xp, SWT.NONE);
+		btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
-
+			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 
 				//System.out.println("Button pushed.");
@@ -81,6 +90,7 @@ public class TCPChatSwtGui {
 
 			}
 		});
+		
 		
 
 		Button btnLogin = new Button(xp, SWT.NONE);
@@ -109,6 +119,7 @@ public class TCPChatSwtGui {
 
 
 		});
+		
 		
 
 		text_2 = new Text(xp, SWT.BORDER);
@@ -162,6 +173,7 @@ public class TCPChatSwtGui {
 
 
 		});
+		
 		 
 		xt("LogOUt");
 		
@@ -208,6 +220,7 @@ public class TCPChatSwtGui {
 		});
 		
 		
+		
 		MenuItem mntmBlue = new MenuItem(menu_2, SWT.RADIO);
 		mntmBlue.setText("Blue");
 		mntmBlue.addSelectionListener(new SelectionListener(){
@@ -226,6 +239,7 @@ public class TCPChatSwtGui {
 
 
 		});
+		
 		
 
 		MenuItem mntmPurple = new MenuItem(menu_2, SWT.RADIO);
@@ -267,7 +281,7 @@ public class TCPChatSwtGui {
 
 		});
 		
-		
+	
 		MenuItem mntmYellow = new MenuItem(menu_2, SWT.RADIO);
 		mntmYellow.setText("Yellow");
 		mntmYellow.addSelectionListener(new SelectionListener(){
@@ -287,15 +301,22 @@ public class TCPChatSwtGui {
 
 		});
 		
+		xp.pack();
 		xp.open();
 		while (!xp.isDisposed()) {
 			if (!dis.readAndDispatch()) {
 				dis.sleep();		}
 		}
+		dis.dispose();
+		
+	}
+	public Button getBtnSenden() {
+		return btnSenden;
 	}
 	private void xt(String string) {
 		// TODO Auto-generated method stub
 
 	}
+
 	
 }

@@ -1,5 +1,10 @@
+package controller;
+
+import gui.TCPChatSwtGui;
+import logic.ChatLogic;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Listener;
@@ -8,10 +13,10 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 
-/*
+
 public class ChatController {
 
-	private ChatLogic logic;
+	private ChatLogic log;
 	private TCPChatSwtGui gui;
 	private Shell xp;
 	private Text text_1;
@@ -21,24 +26,45 @@ public class ChatController {
 	private String uname="";
 	private boolean pruefe= false;
 	private List list;
+	private Display dis;
 	
 	public ChatController(){
-		this.logic = new ChatLogic(null);
+		//init();
+		
+		//this.log = new ChatLogic(null);
+		//this.gui = new TCPChatSwtGui();
 		this.gui = new TCPChatSwtGui();
 		
 		addListener();
+
 	}
-	
-	public void showView() {
-		// TODO Auto-generated method stub
+
+	/*public void showView() {
+
 		//ChatLogic c = new ChatLogic("Patrick");
 		TCPChatSwtGui b = new TCPChatSwtGui();
 	}
+	*/
 	
-	private void addListener() {
+	/*private void init() {
 		// TODO Auto-generated method stub
-		this.gui.setSendButtonListener(new SendButtonListener());
-		this.gui.setLogoutButtonListener(new LogoutButtonListener());
+		xp.pack();
+		xp.open();
+		
+		while (!xp.isDisposed()) {
+			if (!dis.readAndDispatch()) {
+				dis.sleep();		
+			}
+		}
+		dis.dispose();
+
+	}
+	*/
+
+	private void addListener() {
+
+		this.gui.setSendenButtonListener(new SendenButtonListener());
+		/*this.gui.setLogoutButtonListener(new LogoutButtonListener());
 		this.gui.setLoginButtonListener(new LoginButtonListener());
 		this.gui.setText_1EnterListener(new Text_1EnterListener());
 		this.gui.setBlackRadioListener(new BlackRadioListener());
@@ -46,6 +72,7 @@ public class ChatController {
 		this.gui.setPurpleRadioListener(new PurpleRadioListener());
 		this.gui.setRedRadioListener(new RedRadioListener());
 		this.gui.setYellowRadioListener(new YellowRadioListener());
+		*/
 		
 	}
 
@@ -53,11 +80,11 @@ public class ChatController {
 	class LoginButtonListener implements SelectionListener{
 		@Override
 		public void widgetDefaultSelected(SelectionEvent e) {
-			// TODO Auto-generated method stub	
+
 		}
 		@Override
 		public void widgetSelected(SelectionEvent e) {
-			// TODO Auto-generated method stub
+
 			if(pruefe== false){
 				uname= text_2.getText();
 				list.add(uname);
@@ -93,23 +120,18 @@ public class ChatController {
 		}
 	};
 	
-	class SendButtonListener implements SelectionListener{
+	class SendenButtonListener implements SelectionListener{
 		@Override
 		public void widgetDefaultSelected(SelectionEvent e) {
-			// TODO Auto-generated method stub	
 		}
 		@Override
 		public void widgetSelected(SelectionEvent e) {
-			// TODO Auto-generated method stub
-			if(pruefe== false){
-				uname= text_2.getText();
-				list.add(uname);
-				
-				pruefe=true;
-			}else{
-				text_2.setText("Bereits angemeldet");
-				text_2.setEditable(false);
-			}
+			//if(e.getSource()==gui.getBtnSenden()){
+				//System.out.println("Button pushed.");
+				t=uname+": "+text_1.getText()+"\n";
+				text_3.append(t);
+				text_1.setText("");
+			//}
 
 		}
 	};
@@ -202,7 +224,7 @@ public class ChatController {
 
 
 	};
-
-
+		
 }
-*/
+
+
