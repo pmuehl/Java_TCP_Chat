@@ -30,6 +30,7 @@ import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.wb.swt.SWTResourceManager;
+//import org.eclipse.wb.swt.SWTResourceManager;
 
 //import ChatController.Text_1EnterListener;
 
@@ -169,7 +170,7 @@ public class TCPChatSwtGui {
 		xp.setMenuBar(menu);
 
 		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 		mntmConnect.setText("Connect");
 
@@ -177,42 +178,42 @@ public class TCPChatSwtGui {
 		mntmConnect.setText("Connect as");
 		
 //>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
-=======
+//=======
 
 		mntmConnect.setText("Connect");
 		mntmConnect.setText("Connect as");
 		
->>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
+//>>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
 		Menu menu_1 = new Menu(mntmConnect);
 		mntmConnect.setMenu(menu_1);
 
 		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
 		mntmHost.setText("Host");
-<<<<<<< HEAD
+//<<<<<<< HEAD
 ///<<<<<<< HEAD
 
-		MenuItem mntmFreeloader = new MenuItem(menu_1, SWT.NONE);
-		mntmFreeloader.setText("Freeloader");
-
-		MenuItem mntmFarbe = new MenuItem(menu, SWT.CASCADE);
-		mntmFarbe.setText("Farbe");
-
-		Menu menu_2 = new Menu(mntmFarbe);
-		mntmFarbe.setMenu(menu_2);
-
-		MenuItem mntmBlau = new MenuItem(menu_2, SWT.RADIO);
-		mntmBlau.setText("Blau");
-
-		MenuItem mntmGelb = new MenuItem(menu_2, SWT.RADIO);
-		mntmGelb.setText("Gelb");
-
-		MenuItem mntmRot = new MenuItem(menu_2, SWT.RADIO);
-		mntmRot.setText("Rot");
+//		MenuItem mntmFreeloader = new MenuItem(menu_1, SWT.NONE);
+//		mntmFreeloader.setText("Freeloader");
+//
+//		MenuItem mntmFarbe = new MenuItem(menu, SWT.CASCADE);
+//		mntmFarbe.setText("Farbe");
+//
+//		Menu menu_2 = new Menu(mntmFarbe);
+//		mntmFarbe.setMenu(menu_2);
+//
+//		MenuItem mntmBlau = new MenuItem(menu_2, SWT.RADIO);
+//		mntmBlau.setText("Blau");
+//
+//		MenuItem mntmGelb = new MenuItem(menu_2, SWT.RADIO);
+//		mntmGelb.setText("Gelb");
+//
+//		MenuItem mntmRot = new MenuItem(menu_2, SWT.RADIO);
+//		mntmRot.setText("Rot");
 //=======
 		
-=======
+//=======
 
->>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
+//>>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
 		MenuItem mntmUser = new MenuItem(menu_1, SWT.NONE);
 		mntmUser.setText("User");
 		
@@ -321,7 +322,7 @@ public class TCPChatSwtGui {
 
 		});
 		
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 		xt("LogOUt");
 
@@ -363,8 +364,8 @@ public class TCPChatSwtGui {
 
 		});
 
-=======
->>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
+//=======
+//>>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
 		xp.open();
 		while (!xp.isDisposed()) {
 			if (!dis.readAndDispatch()) {
