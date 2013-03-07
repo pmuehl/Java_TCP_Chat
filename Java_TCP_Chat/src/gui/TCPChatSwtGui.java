@@ -1,3 +1,5 @@
+package gui;
+
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.custom.SashForm;
@@ -32,10 +34,9 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.wb.swt.SWTResourceManager;
 //import org.eclipse.wb.swt.SWTResourceManager;
 
-//import ChatController.Text_1EnterListener;
-
 public class TCPChatSwtGui {
 	private Shell xp;
+	private Display dis;
 	private Text text_1;
 	private Text text_2;
 	private Text text_3;
@@ -43,9 +44,12 @@ public class TCPChatSwtGui {
 	private String uname="";
 	private List list;
 	private boolean pruefe= false;
+	private Button btnSenden;
+
+
 	
 	public TCPChatSwtGui() {
-		Display dis = new Display();
+		dis = new Display();
 		xp = new Shell(dis);		
 		xp.setSize(458, 505);
 		
@@ -65,14 +69,16 @@ public class TCPChatSwtGui {
 			}
 		});
 		
+		
 
-		Button btnSenden = new Button(xp, SWT.NONE);
+		btnSenden = new Button(xp, SWT.NONE);
 		btnSenden.setBounds(340, 347, 75, 25);
 		btnSenden.setText("Senden");
 		btnSenden.addSelectionListener(new SelectionListener() {
-
+			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
 			}
+			@Override
 			public void widgetSelected(SelectionEvent e) {
 
 				//System.out.println("Button pushed.");
@@ -82,6 +88,7 @@ public class TCPChatSwtGui {
 
 			}
 		});
+		
 		
 
 		Button btnLogin = new Button(xp, SWT.NONE);
@@ -110,6 +117,7 @@ public class TCPChatSwtGui {
 
 
 		});
+		
 		
 
 		text_2 = new Text(xp, SWT.BORDER);
@@ -163,6 +171,7 @@ public class TCPChatSwtGui {
 
 
 		});
+		
 		 
 		xt("LogOUt");
 		
@@ -170,6 +179,7 @@ public class TCPChatSwtGui {
 		xp.setMenuBar(menu);
 
 		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
+<<<<<<< HEAD:Java_TCP_Chat/src/TCPChatSwtGui.java
 //<<<<<<< HEAD
 
 		mntmConnect.setText("Connect");
@@ -184,11 +194,17 @@ public class TCPChatSwtGui {
 		mntmConnect.setText("Connect as");
 		
 //>>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
+=======
+
+		mntmConnect.setText("Connect as");
+
+>>>>>>> 3e8d031cb06dd171ed4793852341faff8c7ce7b3:Java_TCP_Chat/src/gui/TCPChatSwtGui.java
 		Menu menu_1 = new Menu(mntmConnect);
 		mntmConnect.setMenu(menu_1);
 
 		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
 		mntmHost.setText("Host");
+<<<<<<< HEAD:Java_TCP_Chat/src/TCPChatSwtGui.java
 //<<<<<<< HEAD
 ///<<<<<<< HEAD
 
@@ -214,6 +230,9 @@ public class TCPChatSwtGui {
 //=======
 
 //>>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
+=======
+
+>>>>>>> 3e8d031cb06dd171ed4793852341faff8c7ce7b3:Java_TCP_Chat/src/gui/TCPChatSwtGui.java
 		MenuItem mntmUser = new MenuItem(menu_1, SWT.NONE);
 		mntmUser.setText("User");
 		
@@ -243,6 +262,7 @@ public class TCPChatSwtGui {
 		});
 		
 		
+		
 		MenuItem mntmBlue = new MenuItem(menu_2, SWT.RADIO);
 		mntmBlue.setText("Blue");
 		mntmBlue.addSelectionListener(new SelectionListener(){
@@ -261,6 +281,7 @@ public class TCPChatSwtGui {
 
 
 		});
+		
 		
 
 		MenuItem mntmPurple = new MenuItem(menu_2, SWT.RADIO);
@@ -302,7 +323,7 @@ public class TCPChatSwtGui {
 
 		});
 		
-		
+	
 		MenuItem mntmYellow = new MenuItem(menu_2, SWT.RADIO);
 		mntmYellow.setText("Yellow");
 		mntmYellow.addSelectionListener(new SelectionListener(){
@@ -322,6 +343,7 @@ public class TCPChatSwtGui {
 
 		});
 		
+<<<<<<< HEAD:Java_TCP_Chat/src/TCPChatSwtGui.java
 //<<<<<<< HEAD
 //>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 		xt("LogOUt");
@@ -366,15 +388,24 @@ public class TCPChatSwtGui {
 
 //=======
 //>>>>>>> 34b10eaf5ee20fe389ced02957c2e69cb80c1081
+=======
+		xp.pack();
+>>>>>>> 3e8d031cb06dd171ed4793852341faff8c7ce7b3:Java_TCP_Chat/src/gui/TCPChatSwtGui.java
 		xp.open();
 		while (!xp.isDisposed()) {
 			if (!dis.readAndDispatch()) {
 				dis.sleep();		}
 		}
+		dis.dispose();
+		
+	}
+	public Button getBtnSenden() {
+		return btnSenden;
 	}
 	private void xt(String string) {
 		// TODO Auto-generated method stub
 
 	}
+
 	
 }
