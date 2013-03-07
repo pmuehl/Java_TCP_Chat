@@ -63,7 +63,7 @@ public class ChatController {
 
 	private void addListener() {
 
-		this.gui.setSendenButtonListener(new SendenButtonListener());
+		//this.gui.setSendenButtonListener(new SendenButtonListener());
 		/*this.gui.setLogoutButtonListener(new LogoutButtonListener());
 		this.gui.setLoginButtonListener(new LoginButtonListener());
 		this.gui.setText_1EnterListener(new Text_1EnterListener());
