@@ -119,19 +119,19 @@ public class TCPChatSwtGui {
 		xp.setMenuBar(menu);
 
 		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
-<<<<<<< HEAD
+
 		mntmConnect.setText("Connect");
 
-=======
+
 		mntmConnect.setText("Connect as");
 		
->>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
+//>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 		Menu menu_1 = new Menu(mntmConnect);
 		mntmConnect.setMenu(menu_1);
 
 		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
 		mntmHost.setText("Host");
-<<<<<<< HEAD
+///<<<<<<< HEAD
 
 		MenuItem mntmFreeloader = new MenuItem(menu_1, SWT.NONE);
 		mntmFreeloader.setText("Freeloader");
@@ -150,7 +150,7 @@ public class TCPChatSwtGui {
 
 		MenuItem mntmRot = new MenuItem(menu_2, SWT.RADIO);
 		mntmRot.setText("Rot");
-=======
+//=======
 		
 		MenuItem mntmUser = new MenuItem(menu_1, SWT.NONE);
 		mntmUser.setText("User");
@@ -255,7 +255,7 @@ public class TCPChatSwtGui {
 
 		});
 		
->>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
+//>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 		xt("LogOUt");
 
 		btnLogOUT.addSelectionListener(new SelectionListener(){
@@ -267,7 +267,7 @@ public class TCPChatSwtGui {
 			public void widgetSelected(SelectionEvent e) {
 				// TODO Auto-generated method stub
 				//uname= text_2.getText();
-<<<<<<< HEAD
+//<<<<<<< HEAD
 				if(pruefe== true){
 
 
@@ -279,7 +279,7 @@ public class TCPChatSwtGui {
 					text_2.setEditable(false);
 				}
 
-=======
+//=======
 				
 				//if(pruefe==true){							damit kann ich den buton disablen nachdem er einmal ausgelogt hat, aber dafür nichmehr availablen
 					uname= list.getItem(0);
@@ -290,7 +290,7 @@ public class TCPChatSwtGui {
 				//	System.out.println("Sie sind bereits ausgelogt!");
 				//	btnLogOUT.setEnabled(false);
 				//}
->>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
+//>>>>>>> 2365196539a87ed41a639ec9577b3f8927d2a750
 			}
 
 
