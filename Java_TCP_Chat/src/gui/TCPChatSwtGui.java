@@ -298,40 +298,6 @@ public class TCPChatSwtGui {
 		});
 		
 		xp.pack();
-		xt("LogOUt");
-
-		btnLogOUT.addSelectionListener(new SelectionListener(){
-			@Override
-			public void widgetDefaultSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub	
-			}
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				// TODO Auto-generated method stub
-				//uname= text_2.getText();
-				if(pruefe== true){
-
-
-					uname= list.getItem(0);
-					list.remove(uname);
-					pruefe= false;
-				}else{
-					text_2.setText("Kein user");
-					text_2.setEditable(false);
-				}
-
-				//if(pruefe==true){							damit kann ich den buton disablen nachdem er einmal ausgelogt hat, aber dafür nichmehr availablen
-					uname= list.getItem(0);
-					list.remove(uname);
-					//pruefe=false;							und der button muss final gemacht werden damit er hier aufgerufen werden kann
-
-				//}else{
-				//	System.out.println("Sie sind bereits ausgelogt!");
-				//	btnLogOUT.setEnabled(false);
-				//}
-			}
-		});
-
 		xp.open();
 		while (!xp.isDisposed()) {
 			if (!dis.readAndDispatch()) {
