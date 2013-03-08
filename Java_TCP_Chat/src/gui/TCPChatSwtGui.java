@@ -100,7 +100,8 @@ public class TCPChatSwtGui {
 			public void handleEvent (Event e) {
 				String message= text_1.getText();
 				
-				text_3.append(cl.sendMessage(message));
+				//text_3.append(cl.sendMessage(message));
+				cl.sendMessage(message);
 				text_1.setText("");
 
 			}
@@ -118,7 +119,8 @@ public class TCPChatSwtGui {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				String message= text_1.getText();
-				text_3.append(cl.sendMessage(message));
+				//text_3.append(cl.sendMessage(message));
+				cl.sendMessage(message);
 				//System.out.println("Button pushed.");
 				text_1.setText("");
 
@@ -201,24 +203,6 @@ public class TCPChatSwtGui {
 
 		Menu menu = new Menu(xp, SWT.BAR);
 		xp.setMenuBar(menu);
-
-		MenuItem mntmConnect = new MenuItem(menu, SWT.CASCADE);
-
-
-
-
-
-		mntmConnect.setText("Connect as");
-
-
-		Menu menu_1 = new Menu(mntmConnect);
-		mntmConnect.setMenu(menu_1);
-
-		MenuItem mntmHost = new MenuItem(menu_1, SWT.NONE);
-		mntmHost.setText("Host");
-
-		MenuItem mntmUser = new MenuItem(menu_1, SWT.NONE);
-		mntmUser.setText("User");
 
 		MenuItem mntmFarbe = new MenuItem(menu, SWT.CASCADE);
 		mntmFarbe.setText("Chat colour");

@@ -36,6 +36,7 @@ public class ChatLogic {
 		try	{
 			socket= new MulticastSocket(port);
 			group= InetAddress.getByName("224.1.3.5");
+			socket.setInterface(InetAddress.getByName("10.0.4.120"));
 			socket.joinGroup(group);
 		}catch(IOException e){
 			e.printStackTrace();
@@ -44,14 +45,13 @@ public class ChatLogic {
 		}
 		gui= new TCPChatSwtGui(this);
 		//JOptionPane.showInputDialog("Gib einen Text ein zum senden!");
-		gui.openGui();
-
 		
 
 		Thread recieveThread = new Thread(new recieveThread(socket));
 		//System.out.println("Thread Recieve gestartet!");
 		recieveThread.start();
 		//gui.open();
+		gui.openGui();
 		
 	}
 	public void setUsername(String username){
@@ -83,7 +83,7 @@ public class ChatLogic {
 
 			byte [] buffer;
 			DatagramPacket dp;
-			String nachricht= this.username+": "+ message+ "\n";
+			String nachricht= this.username+": "+ message;
 			buffer= (nachricht).getBytes();
 			dp= new DatagramPacket(buffer, buffer.length, group, port);
 			try{
@@ -129,7 +129,7 @@ public class ChatLogic {
 				DatagramPacket dp= new DatagramPacket(buffer, buffer.length);
 				try{
 					ms.receive(dp);
-					message = new String(dp.getData(),1,dp.getLength(), text_encoding);
+					message = new String(dp.getData(),0,dp.getLength(), text_encoding);
 					gui.update(message);
 					
 				}catch(IOException e){
