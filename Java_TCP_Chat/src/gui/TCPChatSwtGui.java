@@ -345,14 +345,11 @@ public class TCPChatSwtGui {
 		// TODO Auto-generated method stub
 
 	}
-<<<<<<< HEAD
-=======
 	/**
 	 * Update Methode um im Thread der Logik die GUI zu aktualisieren.
 	 * @param message Nachricht die versandt wurde
 	 * @author Patrick Mühl
 	 */
->>>>>>> d87a4ecdff2e73e04bbbc8eda8eb4b3530d3448f
 	public void update(final String message){
 		dis.asyncExec(new Runnable() {
 			@Override
