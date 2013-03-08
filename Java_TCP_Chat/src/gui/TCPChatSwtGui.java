@@ -100,7 +100,8 @@ public class TCPChatSwtGui {
 			public void handleEvent (Event e) {
 				String message= text_1.getText();
 				
-				text_3.append(cl.sendMessage(message));
+				//text_3.append(cl.sendMessage(message));
+				cl.sendMessage(message);
 				text_1.setText("");
 
 			}
@@ -118,8 +119,9 @@ public class TCPChatSwtGui {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				String message= text_1.getText();
-				text_3.append(cl.sendMessage(message));
+				//text_3.append(cl.sendMessage(message));
 				//System.out.println("Button pushed.");
+				cl.sendMessage(message);
 				text_1.setText("");
 
 			}
@@ -362,6 +364,7 @@ public class TCPChatSwtGui {
 			}
 		});
 	}
+
 
 
 }

@@ -13,7 +13,8 @@ public class Chat {
 	
 	
 	public static void main (String [] args){
-		
+		//int port= Integer.parseInt(args[0]);
+		//port, args[1], args[2]
 		new ChatLogic();
 
 	}
