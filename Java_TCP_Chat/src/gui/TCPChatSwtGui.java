@@ -86,6 +86,7 @@ public class TCPChatSwtGui {
 				String message= text_1.getText();
 				
 				text_3.append(cl.sendMessage(message));
+				text_1.setText("");
 
 			}
 		});
@@ -104,6 +105,7 @@ public class TCPChatSwtGui {
 				String message= text_1.getText();
 				text_3.append(cl.sendMessage(message));
 				//System.out.println("Button pushed.");
+				text_1.setText("");
 
 			}
 		});
@@ -320,12 +322,12 @@ public class TCPChatSwtGui {
 		// TODO Auto-generated method stub
 
 	}
-	public void update(final String msg){
+	public void update(final String message){
 		dis.asyncExec(new Runnable() {
 			@Override
 			public void run() {
 				if (!text_3.isDisposed()) {
-					text_3.append(msg+"\n");
+					text_3.append(message+"\n");
 
 
 				}
