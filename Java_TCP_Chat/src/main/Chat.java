@@ -1,7 +1,8 @@
 package main;
 
+import logic.ChatLogic;
 import gui.TCPChatSwtGui;
-import controller.ChatController;
+
 
 /**
  * 
@@ -9,14 +10,11 @@ import controller.ChatController;
  *
  */
 public class Chat {
-	static ChatController controller;
+	
 	
 	public static void main (String [] args){
-		//controller = new ChatController();
-		//controller.showView();
 		
-		//ChatLogic c = new ChatLogic("Patrick");
-		TCPChatSwtGui b = new TCPChatSwtGui();
+		new ChatLogic();
 
 	}
 }
