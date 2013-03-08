@@ -35,7 +35,12 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.wb.swt.SWTResourceManager;
 //import org.eclipse.wb.swt.SWTResourceManager;
-
+/**
+ * Gui Klasse 
+ * Anzeigen der Elemente im User Interface
+ * @author Stefan Pitirut, Patrick Mühl
+ *
+ */
 public class TCPChatSwtGui {
 	private Shell xp;
 	private Display dis;
@@ -49,14 +54,21 @@ public class TCPChatSwtGui {
 	private Button btnSenden;
 	private ChatLogic cl;
 
-	public void setText_3(String msg){
-		this.text_3.append(msg);
-	}
+	/**
+	 * Konstruktor der Klasse 
+	 * Default initialisierung der Gui,
+	 * @param e Logik wird als Parameter übergeben um auf die Funktionalität zuzugreifen
+	 * @author Stefan Pitirut
+	 */
 	public TCPChatSwtGui(ChatLogic e) {
 		dis = new Display();
 		xp = new Shell(dis);		
 		this.cl=e;
 	}
+	/**
+	 * Methode zum öffnen der GUI 
+	 * @author Patrick Mühl
+	 */
 	public void openGui(){
 		createComponents();
 		xp.pack();
@@ -68,7 +80,10 @@ public class TCPChatSwtGui {
 		}
 		//dis.dispose();
 	}
-	
+	/**
+	 * Methode in welcher die Komponenten der GUI initialisiert und hinzugefügt werden. 
+	 * Verbindung der Funktionalität und der GUI
+	 */
 	protected void createComponents(){
 		xp= new Shell();
 		xp.setSize(458, 505);
@@ -315,13 +330,29 @@ public class TCPChatSwtGui {
 
 		xt("LogOUt");
 	}
+	/**
+	 * Methode um den Button zurückzugeben
+	 * @return BtnSenden 
+	 */
 	public Button getBtnSenden() {
 		return btnSenden;
 	}
+	/**
+	 * 
+	 * @param string
+	 */
 	private void xt(String string) {
 		// TODO Auto-generated method stub
 
 	}
+<<<<<<< HEAD
+=======
+	/**
+	 * Update Methode um im Thread der Logik die GUI zu aktualisieren.
+	 * @param message Nachricht die versandt wurde
+	 * @author Patrick Mühl
+	 */
+>>>>>>> d87a4ecdff2e73e04bbbc8eda8eb4b3530d3448f
 	public void update(final String message){
 		dis.asyncExec(new Runnable() {
 			@Override

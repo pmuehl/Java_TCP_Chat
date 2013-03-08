@@ -5,8 +5,8 @@ import gui.TCPChatSwtGui;
 
 
 /**
- * 
- * @author Patrick Muehl
+ * Hauptklasse um alles zu starten
+ * @author Patrick Muehl, Stefan Pitirut
  *
  */
 public class Chat {

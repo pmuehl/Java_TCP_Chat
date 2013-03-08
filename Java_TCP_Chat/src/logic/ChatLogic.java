@@ -29,6 +29,7 @@ public class ChatLogic {
 	 * Konstruktor.
 	 * Hier wird der Socket gestartet und eine Verbindung aufgebaut
 	 * @param username Benutzername des Benutzers, wird im Chat angezeigt
+	 * @author Patrick Muehl
 	 */
 	public ChatLogic(){
 		
@@ -51,6 +52,7 @@ public class ChatLogic {
 		//System.out.println("Thread Recieve gestartet!");
 		recieveThread.start();
 		//gui.open();
+		
 	}
 	public void setUsername(String username){
 		this.username= username;
@@ -59,6 +61,7 @@ public class ChatLogic {
 
 	/**
 	 * Methode zum Trennen der Verbindung
+	 * @author Patrick Muehl
 	 */
 	public void disconnect(){
 		try{	
@@ -107,7 +110,10 @@ public class ChatLogic {
 		public recieveThread(MulticastSocket ms){
 			this.ms = ms;
 		}
-
+		/**
+		 * Run Methode in welcher auf Nachrichten gehört wird
+		 * @author Patrick Muehl
+		 */
 		@Override
 		public void run() {
 			while(true) {
