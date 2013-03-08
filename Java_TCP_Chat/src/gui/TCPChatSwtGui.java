@@ -120,10 +120,7 @@ public class TCPChatSwtGui {
 			public void widgetSelected(SelectionEvent e) {
 				String message= text_1.getText();
 				//text_3.append(cl.sendMessage(message));
-<<<<<<< HEAD
 				cl.sendMessage(message);
-=======
->>>>>>> 93e29b573cd77407534d0cd91bc6e77c7f0dc7b6
 				//System.out.println("Button pushed.");
 				cl.sendMessage(message);
 				text_1.setText("");
